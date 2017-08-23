@@ -1,0 +1,9 @@
+startup_message off
+caption always "%w%=%C%a"
+defscrollback 10000
+shell -${SHELL}
+deflogin off
+term screen-256color
+termcapinfo xterm* ti@:te@
+#hardstatus alwayslastline '%{= G}[ %{G}%H %{g}][%= %{= w}%?%-Lw%?%{= R}%n*%f %t%?%{= R}(%u)%?%{= w}%+Lw%?%= %{= g}][ %{y}Load: %l %{g}][%{B}%Y-%m-%d %{W}%c:%s %{g}]'
+
