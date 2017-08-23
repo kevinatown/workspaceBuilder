@@ -14,8 +14,6 @@ alias ll='ls -lah'
 # The orginal version is saved in .bash_profile.pysave
 # PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
 # export PATH
-# Added by install_latest_perl_osx.pl
-#[ -r /Users/kevin/.bashrc ] && source /Users/kevin/.bashrc
 
 #Easy sublime open from command line
 alias subl='open -a /Applications/Sublime\ Text.app'
