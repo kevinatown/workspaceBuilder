@@ -5,7 +5,7 @@ if [ -f ~/.bashrc ]; then
         . ~/.bashrc
 fi
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 # Uncomment to change to Setting PATH for Python 3.4
 # The orginal version is saved in .bash_profile.pysave
@@ -27,7 +27,6 @@ HISTCONTROL=ignoreboth
 
 # [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
-export PATH
 shopt -s nocaseglob
 
 # Change prompt
