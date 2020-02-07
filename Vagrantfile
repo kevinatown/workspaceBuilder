@@ -1,6 +1,31 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$msg = <<MSG
+------------------------------------------------------
+    Welcome to Debian 9!
+
+    Ports forwared:
+      - guest: 3000, host: 3000
+      - guest: 5432, host: 5432 (psql)
+      - guest: 6379, host: 6379 (redis)
+      - guest: 8000, host: 8000
+
+    Aliases:
+      - psqluser        # switch to postgres
+      - ll              # ls -lah
+      - runredis        # run redis server
+      - pyenv           # ativate python env
+      - startpsql       # postgres client
+
+    Functions:
+      - hlp             # rerun this help message
+      - srv <port>      # simple python server at <port>, default: 8080
+      - tz <directory>  # tar and gzip given file
+      - utz <file>      # unzip zipped tarball
+------------------------------------------------------
+MSG
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -12,7 +37,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "debian/contrib-stretch64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -22,8 +47,12 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 5432, host: 5432
+  config.vm.network "forwarded_port", guest: 6379, host: 6379
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  # config.vm.network "forwarded_port", guest: 8080, host: 8080
+  # config.vm.network "forwarded_port", guest: 8090, host: 8090
   # config.vm.network :bridged, :mac => 0800279DEEEE, :bridge => "eth0"
 
   # Create a private network, which allows host-only access to the machine
@@ -51,7 +80,7 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
     # Customize the amount of memory on the VM:
-    vb.memory = "2048"
+    vb.memory = "4096"
   end
   #
   # View the documentation for the provider you are using for more
@@ -70,6 +99,7 @@ Vagrant.configure(2) do |config|
   # config.vm.provision "shell", inline <<-SHELL
   #   sudo apt-get install apache2
   # SHELL
-  config.vm.provision "shell", privileged: false, path: "provision.sh"
+  config.vm.provision "shell", privileged: false, keep_color: false, path: "provision.sh"
+  config.vm.post_up_message = $msg
 
 end

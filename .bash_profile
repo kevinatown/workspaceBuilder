@@ -119,3 +119,5 @@ alias subl='open -a /Applications/Sublime\ Text.app'
 alias srv='pyServer $1'
 alias gitsync='git fetch upstream && git checkout -f master && git merge upstream/master'
 alias kp='killProcess $1'
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
